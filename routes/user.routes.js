@@ -8,6 +8,8 @@ router.get('/:id', getOne)
 router.put("/new", createUser);
 router.put("/edit/:id", editOne);
 router.put("/wishList/add/:id", addWishList);
-router.put("/wishList/remove/:id", removeOneWishList);
+
+/* ---------------Delete -----------*/
+router.delete("/wishList/remove/:id", removeOneWishList);
 
 module.exports = router;
