@@ -62,7 +62,21 @@ const addWishList = (req, res, next) => {
     }
   })
 }
+const removeOneWishList = (req, res, next) => {
+  const { id } = req.params
+  const { idProduct } = req.body
+  UserModel.findById(id).then(user => {
+    if (user.wishList.includes(idProduct)) {
+      UserModel.findByIdAndUpdate(id, { $pull: { wishList: idProduct } }, { new: true })
+        .then(user => res.status(200).json(user.wishList))
+        .catch(res.status(400))
+    } else {
+      res.status(400).json({ errorMessage: "the product dont exists in the wish list" })
+    }
+  })
+}
 
 
 
-module.exports = { createUser, getOne, editOne, addWishList }
+
+module.exports = { createUser, getOne, editOne, addWishList, removeOneWishList }
