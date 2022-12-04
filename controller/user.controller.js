@@ -39,7 +39,30 @@ const getOne = (req, res, next) => {
   } catch (err) {
     res.status(400).json({ errorMessage: err.message })
   }
-
 }
 
-module.exports = { createUser, getOne }
+const editOne = (req, res, next) => {
+  const { id } = req.params
+  const { username, email, password, location } = req.body
+  UserModel.findByIdAndUpdate(id, { username, email, password, location }, { new: true })
+    .then(user => res.status(200).json(user))
+    .catch(next)
+}
+
+const addWishList = (req, res, next) => {
+  const { id } = req.params
+  const { idProduct } = req.body
+  UserModel.findById(id).then(user => {
+    if (!user.wishList.includes(idProduct)) {
+      UserModel.findByIdAndUpdate(id, { $push: { wishList: idProduct } }, { new: true })
+        .then(user => res.status(200).json(user.wishList))
+        .catch(res.status(400))
+    } else {
+      res.status(400).json({ errorMessage: "the product already exists in the wish list" })
+    }
+  })
+}
+
+
+
+module.exports = { createUser, getOne, editOne, addWishList }

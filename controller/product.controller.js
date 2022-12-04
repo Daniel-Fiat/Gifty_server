@@ -24,6 +24,7 @@ const getOne = (req, res, next) => {
         res.status(400).json({ errorMessage: err.message })
     }
 }
+
 const deleteOne = (req, res, next) => {
     try {
         const { id } = req.params
