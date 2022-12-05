@@ -20,10 +20,8 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
-    location: [{lat:String, lng:String}],
-    wishList:[{
-      type: String,default:[]}
-    ]
+    location: [{ lat: String, lng: String }],
+    wishList: [{ type: String, default: [] }]
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`    

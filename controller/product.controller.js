@@ -40,5 +40,16 @@ const deleteOne = (req, res, next) => {
         res.status(400).json({ errorMessage: err.message })
     }
 }
+const getCatalog = (req, res, next) => {
+    const { sellerUser } = req.params
+    console.log({ sellerUser: sellerUser })
+    ProductModel.find({ sellerUser: sellerUser })
+        .then(catalog => {
+            console.log(catalog)
+            res.status(200).json(catalog)
 
-module.exports = { createProduct, getOne, deleteOne }
+        })
+
+}
+
+module.exports = { createProduct, getOne, deleteOne, getCatalog }

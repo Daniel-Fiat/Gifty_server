@@ -4,6 +4,7 @@ const { createUser, getOne, editOne, addWishList, removeOneWishList } = require(
 
 /* --------------GET------------- */
 router.get('/:id', getOne)
+
 /* ---------------PUT -----------*/
 router.put("/new", createUser);
 router.put("/edit/:id", editOne);
