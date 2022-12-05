@@ -41,15 +41,13 @@ const deleteOne = (req, res, next) => {
     }
 }
 const getCatalog = (req, res, next) => {
-    const { sellerUser } = req.params
-    console.log({ sellerUser: sellerUser })
-    ProductModel.find({ sellerUser: sellerUser })
+    const { idUser } = req.params
+    console.log(idUser)
+    ProductModel.find({ sellerUser: idUser })
         .then(catalog => {
-            console.log(catalog)
+            console.log({ $match: { sellerUser: idUser } })
             res.status(200).json(catalog)
-
         })
-
 }
 
 module.exports = { createProduct, getOne, deleteOne, getCatalog }

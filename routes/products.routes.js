@@ -4,8 +4,8 @@ const { createProduct, getOne, deleteOne, getCatalog } = require('../controller/
 
 /* --------------GET------------- */
 //router.get("/", getAll);
+router.get('/catalog/:idUser', getCatalog)
 router.get('/:id', getOne)
-router.get('/catalog/:sellerUser', getCatalog)
 
 /* ---------------PUT -----------*/
 router.put('/new', createProduct)

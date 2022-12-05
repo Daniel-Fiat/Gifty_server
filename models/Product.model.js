@@ -1,4 +1,4 @@
-const { Schema, model,Types } = require("mongoose");
+const { Schema, model, Types } = require("mongoose");
 
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
 const productSchema = new Schema(
@@ -20,9 +20,10 @@ const productSchema = new Schema(
         price: {
             type: Number,
         },
-        sellerUser:{ 
+        sellerUser: {
             type: String,
             required: true,
+            trim: true,
         }
     },
     {
