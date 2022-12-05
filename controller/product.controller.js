@@ -24,6 +24,15 @@ const getOne = (req, res, next) => {
         res.status(400).json({ errorMessage: err.message })
     }
 }
+const getAll = (req, res, next) => {
+    try {
+        ProductModel.find()
+            .then((products => res.status(200).json(products)))
+            .catch(next)
+    } catch (err) {
+        res.status(400).json({ errorMessage: "err.message" })
+    }
+}
 
 const deleteOne = (req, res, next) => {
     try {
@@ -50,4 +59,4 @@ const getCatalog = (req, res, next) => {
         })
 }
 
-module.exports = { createProduct, getOne, deleteOne, getCatalog }
+module.exports = { createProduct, getOne, deleteOne, getCatalog, getAll }
