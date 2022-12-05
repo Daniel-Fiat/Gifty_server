@@ -6,7 +6,6 @@ const MESSAGE_ERROR_EMAIL = 'Email ya está en uso.';
 
 const createUser = (req, res, next) => {
   const { email, password } = req.body
-  console.log(req.body)
   UserModel.findOne({ email })
     .then((user) => {
       if (user) {
@@ -30,10 +29,9 @@ const createUser = (req, res, next) => {
 const login = (req, res, next) => {
   const { email, password } = req.body
   UserModel.findOne({ email }).then(user => {
-
     if (user && bcrypt.compareSync(password, user.password)) { res.status(200).json(user) }
-    else { res.status(400).json({ errorMessage: "Usuario o contraseña incorrectos" }) }
-  })
+    else { res.status(401).json({ errorMessage: "Usuario o contraseña incorrectos" }) }
+  }).catch(res.status(400))
 }
 
 const getOne = (req, res, next) => {
