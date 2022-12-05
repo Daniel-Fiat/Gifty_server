@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const UserModel = require('../models/User.model');
-const { createUser, getOne, editOne, addWishList, removeOneWishList } = require('../controller/user.controller');
+const { createUser, getOne, editOne, addWishList, removeOneWishList, login } = require('../controller/user.controller');
 
 /* --------------GET------------- */
 router.get('/:id', getOne)
@@ -8,6 +7,7 @@ router.get('/:id', getOne)
 
 /* ---------------POST -----------*/
 router.post("/new", createUser);
+router.post('/login', login)
 
 /* ---------------PUT -----------*/
 router.put("/edit/:id", editOne);
