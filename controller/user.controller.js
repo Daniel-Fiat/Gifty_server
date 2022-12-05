@@ -5,7 +5,8 @@ const SALT = 10;
 const MESSAGE_ERROR_EMAIL = 'Email ya está en uso.';
 
 const createUser = (req, res, next) => {
-  const { username, email, password, location } = req.body
+  const { email, password } = req.body
+  console.log(req.body)
   UserModel.findOne({ email })
     .then((user) => {
       if (user) {
@@ -13,10 +14,10 @@ const createUser = (req, res, next) => {
       }
       const saltBcrypt = bcrypt.genSaltSync(SALT);
       const hashBcrypt = bcrypt.hashSync(password, saltBcrypt);
-      return UserModel.create({ username, email, password: hashBcrypt, location });
+      return UserModel.create({ email, password: hashBcrypt });
     })
     .then(() => {
-      res.sendStatus(201);
+      res.sendStatus(201); rs
     })
     .catch((err) => {
       if (err.message === MESSAGE_ERROR_EMAIL) {
@@ -43,8 +44,10 @@ const getOne = (req, res, next) => {
 
 const editOne = (req, res, next) => {
   const { id } = req.params
-  const { username, email, password, location } = req.body
-  UserModel.findByIdAndUpdate(id, { username, email, password, location }, { new: true })
+  const { email, password, location } = req.body
+  const saltBcrypt = bcrypt.genSaltSync(SALT);
+  const hashBcrypt = bcrypt.hashSync(password, saltBcrypt);
+  UserModel.findByIdAndUpdate(id, { email, password: hashBcrypt, location }, { new: true })
     .then(user => res.status(200).json(user))
     .catch(next)
 }
