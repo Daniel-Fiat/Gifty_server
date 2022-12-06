@@ -2,7 +2,6 @@ const ProductModel = require('../models/Product.model');
 const UserModel = require('../models/User.model');
 const mongoose = require("mongoose");
 const { isValidObjectId } = require('mongoose');
-const User = require('../models/User.model');
 const MESSAGE_ERROR_ID = 'Error: InvalidID';
 
 const createProduct = (req, res, next) => {
@@ -20,6 +19,15 @@ const createProduct = (req, res, next) => {
         }
     })
 
+}
+
+const updateProduct = (req, res, next) => {
+    const { name, imgUrl, description, price } = req.body
+    const { idProduct } = req.params
+    console.log(idProduct, name, imgUrl, description, price)
+    ProductModel.findByIdAndUpdate(idProduct, { name, imgUrl, description, price }, { new: true })
+        .then(product => res.status(200).json(product))
+        .catch(next)
 }
 
 const getOne = (req, res, next) => {
@@ -69,4 +77,4 @@ const getCatalog = (req, res, next) => {
         })
 }
 
-module.exports = { createProduct, getOne, deleteOne, getCatalog, getAll }
+module.exports = { createProduct, getOne, deleteOne, getCatalog, getAll, updateProduct }
