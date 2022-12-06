@@ -12,7 +12,7 @@ router.post('/login', login)
 
 /* ---------------PUT -----------*/
 router.put("/edit/:id", validateToken, editOne);
-router.put("/wishList/add/:id", validateToken, addWishList);
+router.put("/wishList/add/:id", addWishList);
 
 /* ---------------Delete -----------*/
 router.delete("/wishList/remove/:id", validateToken, removeOneWishList);

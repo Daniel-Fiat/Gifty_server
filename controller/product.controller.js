@@ -76,5 +76,16 @@ const getCatalog = (req, res, next) => {
             res.status(200).json(catalog)
         })
 }
+const getWishList = (req, res, next) => {
+    const { idUser } = req.params
+    UserModel.findById(idUser).then(user =>
+        ProductModel.find({ _id: user.wishList })
+            .then(wishList => {
+                console.log(wishList)
+                res.status(200).json(wishList)
+            })
 
-module.exports = { createProduct, getOne, deleteOne, getCatalog, getAll, updateProduct }
+    )
+}
+
+module.exports = { createProduct, getOne, deleteOne, getCatalog, getAll, updateProduct, getWishList }
