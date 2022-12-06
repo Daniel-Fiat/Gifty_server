@@ -5,7 +5,7 @@
 | /user/edit/:id             | PUT    |              | Edit one user                  |
 | /user/wishList/add/:id     | PUT    |              | Add product whisList of user   |
 | /user/wishList/remove/:id  | DELETE |              | Delete product whisList of user|
-| /products/catalog/:idUser  | GET    |              | Product of seller user         |
+| /products/catalog/:idUser  | GET    |              | Products of seller user         |
 | /products/:id              | GET    |              | Get one product                |
 | /products/new              | PUT    |              | Create one product             |
 | /products/delete/:id       | DELETE |              | Delete one product             |

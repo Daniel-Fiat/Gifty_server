@@ -1,8 +1,9 @@
 const validateToken = require("../middleware/validateToken.middleware");
 const router = require('express').Router();
-const { createUser, getOne, editOne, addWishList, removeOneWishList, login } = require('../controller/user.controller');
+const { getUserToken, createUser, getOne, editOne, addWishList, removeOneWishList, login } = require('../controller/user.controller');
 
 /* --------------GET------------- */
+router.get("/me", validateToken, getUserToken);
 router.get('/:id', getOne)
 
 

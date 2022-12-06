@@ -6,6 +6,12 @@ const SALT = 10;
 
 const MESSAGE_ERROR_EMAIL = 'Email ya está en uso.';
 
+const getUserToken = (req, res, next) => {
+  UserModel.findById(req.user._id).then((user) => {
+    res.json(user)
+  })
+}
+
 const createUser = (req, res, next) => {
   const { email, password } = req.body
   UserModel.findOne({ email })
@@ -95,4 +101,4 @@ const removeOneWishList = (req, res, next) => {
 
 
 
-module.exports = { createUser, getOne, editOne, addWishList, removeOneWishList, login }
+module.exports = { getUserToken, createUser, getOne, editOne, addWishList, removeOneWishList, login }
