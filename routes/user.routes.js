@@ -1,3 +1,4 @@
+const validateToken = require("../middleware/validateToken.middleware");
 const router = require('express').Router();
 const { createUser, getOne, editOne, addWishList, removeOneWishList, login } = require('../controller/user.controller');
 
@@ -10,10 +11,10 @@ router.post("/new", createUser);
 router.post('/login', login)
 
 /* ---------------PUT -----------*/
-router.put("/edit/:id", editOne);
-router.put("/wishList/add/:id", addWishList);
+router.put("/edit/:id", validateToken, editOne);
+router.put("/wishList/add/:id", validateToken, addWishList);
 
 /* ---------------Delete -----------*/
-router.delete("/wishList/remove/:id", removeOneWishList);
+router.delete("/wishList/remove/:id", validateToken, removeOneWishList);
 
 module.exports = router;

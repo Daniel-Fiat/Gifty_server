@@ -21,9 +21,8 @@ const productSchema = new Schema(
             type: Number,
         },
         sellerUser: {
-            type: String,
-            required: true,
-            trim: true,
+            type: Types.ObjectId,
+            ref: "User"
         }
     },
     {

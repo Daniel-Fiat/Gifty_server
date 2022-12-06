@@ -1,14 +1,25 @@
 const ProductModel = require('../models/Product.model');
+const UserModel = require('../models/User.model');
 const mongoose = require("mongoose");
 const { isValidObjectId } = require('mongoose');
+const User = require('../models/User.model');
 const MESSAGE_ERROR_ID = 'Error: InvalidID';
 
 const createProduct = (req, res, next) => {
     const { name, imgUrl, description, price, sellerUser } = req.body
+    console.log(sellerUser)
+    UserModel.findById(sellerUser).then(user => {
+        console.log(user._id)
+        if (user) {
+            ProductModel.create({ name, imgUrl, description, price, sellerUser: user._id })
+                .then(res.sendStatus(201))
+                .catch(next)
+        } else {
 
-    ProductModel.create({ name, imgUrl, description, price, sellerUser })
-        .then(res.sendStatus(201))
-        .catch(res.sendStatus(400))
+            res.sendStatus(401)
+        }
+    })
+
 }
 
 const getOne = (req, res, next) => {
@@ -51,7 +62,6 @@ const deleteOne = (req, res, next) => {
 }
 const getCatalog = (req, res, next) => {
     const { idUser } = req.params
-    console.log(idUser)
     ProductModel.find({ sellerUser: idUser })
         .then(catalog => {
             console.log({ $match: { sellerUser: idUser } })
