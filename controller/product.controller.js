@@ -36,7 +36,7 @@ const getOne = (req, res, next) => {
             throw new Error(MESSAGE_ERROR_ID)
         }
         ProductModel.findById(id)
-            .populate("sellerUser")
+            .populate({ path: "sellerUser", select: "email" })
             .then((product => res.status(200).json(product)))
             .catch(next)
     } catch (err) {
