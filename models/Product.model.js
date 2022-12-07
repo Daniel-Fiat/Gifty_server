@@ -22,6 +22,7 @@ const productSchema = new Schema(
         },
         rating: {
             type: Number,
+            default: 0,
         },
         sellerUser: {
             type: Types.ObjectId,
