@@ -6,3 +6,18 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
 });
+
+function validParentheses(parens) {
+  parens.split("").map((paren, i) => {
+    switch (paren) {
+      case 40:
+
+        break;
+
+      default:
+        break;
+    }
+
+  })
+  return false;
+}

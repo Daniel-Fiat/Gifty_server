@@ -23,7 +23,10 @@ const productSchema = new Schema(
         sellerUser: {
             type: Types.ObjectId,
             ref: "User"
-        }
+        },
+        category: [{ type: String, default: [], enum: ["breakfast", 'cakes', 'tapas', 'flowers', 'drinks', 'objects'] }],
+        chance: [{ type: String, default: [], enum: ["birthday", 'anniversary', 'Valentine', 'graduation'] }],
+
     },
     {
         // this second object adds extra properties: `createdAt` and `updatedAt`    

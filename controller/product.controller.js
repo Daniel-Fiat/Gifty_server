@@ -5,16 +5,15 @@ const { isValidObjectId } = require('mongoose');
 const MESSAGE_ERROR_ID = 'Error: InvalidID';
 
 const createProduct = (req, res, next) => {
-    const { name, imgUrl, description, price, sellerUser } = req.body
+    const { name, imgUrl, description, price, sellerUser, category, chance } = req.body
     console.log(sellerUser)
     UserModel.findById(sellerUser).then(user => {
         console.log(user._id)
         if (user) {
-            ProductModel.create({ name, imgUrl, description, price, sellerUser: user._id })
+            ProductModel.create({ name, imgUrl, description, price, sellerUser: user._id, category, chance })
                 .then(res.sendStatus(201))
                 .catch(next)
         } else {
-
             res.sendStatus(401)
         }
     })
@@ -43,6 +42,7 @@ const getOne = (req, res, next) => {
         res.status(400).json({ errorMessage: err.message })
     }
 }
+
 const getAll = (req, res, next) => {
     try {
         ProductModel.find()
