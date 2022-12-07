@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const ReviewModel = require('../models/Review.model')
-const { createReview, getRatingProduct } = require('../controller/review.controller');
+const { createReview } = require('../controller/review.controller');
 
 /* --------------GET------------- */
-router.get('/getRating', getRatingProduct)
+
 
 
 /* ---------------PUT -----------*/

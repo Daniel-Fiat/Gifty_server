@@ -14,4 +14,4 @@ const createReview = (req, res, next) => {
         .catch(res.sendStatus(400))
 }
 
-module.exports = { createReview, getRatingProduct }
+module.exports = { createReview }
