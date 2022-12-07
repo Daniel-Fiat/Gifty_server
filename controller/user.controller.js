@@ -71,12 +71,10 @@ const editOne = (req, res, next) => {
     .then(user => res.status(200).json(user))
     .catch(next)
 }
-
 const addWishList = (req, res, next) => {
   const { id } = req.params
   const { idProduct } = req.body
   UserModel.findById(id).then(user => {
-    console.log(user)
     if (!user.wishList.includes(idProduct)) {
       UserModel.findByIdAndUpdate(id, { $push: { wishList: idProduct } }, { new: true })
         .then(user => res.status(200).json(user.wishList))

@@ -15,6 +15,6 @@ router.put("/edit/:id", validateToken, editOne);
 router.put("/wishList/add/:id", addWishList);
 
 /* ---------------Delete -----------*/
-router.delete("/wishList/remove/:id", validateToken, removeOneWishList);
+router.put("/wishList/remove/:id", removeOneWishList);
 
 module.exports = router;

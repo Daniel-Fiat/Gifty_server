@@ -6,9 +6,7 @@ const MESSAGE_ERROR_ID = 'Error: InvalidID';
 
 const createProduct = (req, res, next) => {
     const { name, imgUrl, description, price, sellerUser, category, chance } = req.body
-    console.log(sellerUser)
     UserModel.findById(sellerUser).then(user => {
-        console.log(user._id)
         if (user) {
             ProductModel.create({ name, imgUrl, description, price, sellerUser: user._id, category, chance })
                 .then(res.sendStatus(201))
@@ -23,7 +21,6 @@ const createProduct = (req, res, next) => {
 const updateProduct = (req, res, next) => {
     const { name, imgUrl, description, price } = req.body
     const { idProduct } = req.params
-    console.log(idProduct, name, imgUrl, description, price)
     ProductModel.findByIdAndUpdate(idProduct, { name, imgUrl, description, price }, { new: true })
         .then(product => res.status(200).json(product))
         .catch(next)
@@ -73,7 +70,6 @@ const getCatalog = (req, res, next) => {
     const { idUser } = req.params
     ProductModel.find({ sellerUser: idUser })
         .then(catalog => {
-            console.log({ $match: { sellerUser: idUser } })
             res.status(200).json(catalog)
         })
 }
@@ -82,7 +78,6 @@ const getWishList = (req, res, next) => {
     UserModel.findById(idUser).then(user =>
         ProductModel.find({ _id: user.wishList })
             .then(wishList => {
-                console.log(wishList)
                 res.status(200).json(wishList)
             })
 
