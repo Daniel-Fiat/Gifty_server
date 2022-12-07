@@ -20,6 +20,9 @@ const productSchema = new Schema(
         price: {
             type: Number,
         },
+        rating: {
+            type: Number,
+        },
         sellerUser: {
             type: Types.ObjectId,
             ref: "User"
