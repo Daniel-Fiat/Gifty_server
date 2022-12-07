@@ -83,5 +83,31 @@ const getWishList = (req, res, next) => {
 
     )
 }
+const getCategory = (req, res, next) => {
+    const { category } = req.params
+    const { offset = 0, limit = 15 } = req.body
+    console.log(category)
+    ProductModel
+        .find({ category: category })
+        .limit(limit)
+        .skip(limit * offset)
+        .sort({ rating: -1 })
+        .then(products => {
+            res.status(200).json(products)
+        })
+}
+const getChanse = (req, res, next) => {
+    const { chance } = req.params
+    const { offset = 0, limit = 15 } = req.body
+    console.log(chance)
+    ProductModel
+        .find({ chance: chance })
+        .limit(limit)
+        .skip(limit * offset)
+        .sort({ rating: -1 })
+        .then(products => {
+            res.status(200).json(products)
+        })
+}
 
-module.exports = { createProduct, getOne, deleteOne, getCatalog, getAll, updateProduct, getWishList }
+module.exports = { createProduct, getOne, deleteOne, getCatalog, getAll, updateProduct, getWishList, getCategory, getChanse }
