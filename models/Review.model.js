@@ -1,7 +1,4 @@
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema
-const Types = mongoose.Schema.Types
-const model = mongoose.model
+const { Schema, model, Types } = require("mongoose");
 
 const reviewSchema = new Schema(
     {

@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const ProductModel = require('../models/Product.model')
 const { createProduct, getOne, deleteOne, getCatalog, getAll, updateProduct, getWishList, getCategory, getChanse, getTopTen } = require('../controller/product.controller');
 
 /* --------------GET------------- */
