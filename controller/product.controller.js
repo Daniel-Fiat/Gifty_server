@@ -42,8 +42,14 @@ const getOne = (req, res, next) => {
 }
 
 const getAll = (req, res, next) => {
+    const { find, limit, offset, sort } = req.body
+    const skip = limit * offset
+    console.log(offset)
     try {
-        ProductModel.find()
+        ProductModel.find(find)
+            .limit(limit)
+            .skip(skip)
+            .sort(sort)
             .then((products => res.status(200).json(products)))
             .catch(next)
     } catch (err) {
