@@ -3,14 +3,12 @@ const mongoose = require("mongoose");
 
 
 const createOrder = (req, res, next) => {
-    const { price, sellerUser, clientUser, productID, deliveryAddress } = req.body
-    console.log(price, sellerUser, clientUser, productID, deliveryAddress)
+    const { price, sellerUser, clientUser, productID, dedication, deliveryAddress, deliverDate, State } = req.body
     if (price) {
-        OrderModel.create({ price, sellerUser, clientUser, productID, deliveryAddress })
+        OrderModel.create({ price, sellerUser, clientUser, productID, dedication, deliveryAddress, deliverDate, State })
             .then(res.sendStatus(201))
             .catch(next)
     } else {
-
         res.sendStatus(400)
     }
 }
