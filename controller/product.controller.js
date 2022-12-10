@@ -44,7 +44,7 @@ const getOne = (req, res, next) => {
 const getAll = (req, res, next) => {
     const { find, limit, offset, sort } = req.body
     const skip = limit * offset
-    console.log(offset)
+
     try {
         ProductModel.find(find)
             .limit(limit)
