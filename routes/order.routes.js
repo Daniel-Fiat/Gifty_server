@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { createOrder, getByseller, getByClient, updateState } = require('../controller/order.Controller');
+const { createOrder, getBySeller, getByClient, updateState } = require('../controller/order.Controller');
 
 
 /* --------------GET------------- */
-router.get('/seller/:id', getByseller)
+router.get('/seller/:id', getBySeller)
 router.get('/client/:id', getByClient)
 
 /* ---------------POST -----------*/

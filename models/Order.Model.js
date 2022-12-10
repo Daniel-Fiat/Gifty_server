@@ -16,7 +16,7 @@ const orderSchema = new Schema(
         },
         productID: {
             type: Types.ObjectId,
-            ref: "User"
+            ref: "Product"
         },
         dedication: String,
         deliverDate: String,

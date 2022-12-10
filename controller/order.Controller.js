@@ -12,14 +12,20 @@ const createOrder = (req, res, next) => {
         res.sendStatus(400)
     }
 }
-const getByseller = (req, res, next) => {
+const getBySeller = (req, res, next) => {
     const { id } = req.params
     OrderModel.find({ sellerUser: id })
+        .populate({ path: "sellerUser", select: "email" })
+        .populate({ path: "clientUser", select: "email" })
+        .populate({ path: "productID" })
         .then(order => res.status(201).json(order))
 }
 const getByClient = (req, res, next) => {
     const { id } = req.params
     OrderModel.find({ clientUser: id })
+        .populate({ path: "sellerUser", select: "email" })
+        .populate({ path: "clientUser", select: "email" })
+        .populate({ path: "productID" })
         .then(order => res.status(201).json(order))
         .catch(next)
 }
@@ -31,4 +37,4 @@ const updateState = (req, res, next) => {
         .then(order => res.status(200).json(order))
 }
 
-module.exports = { createOrder, getByseller, getByClient, updateState }
+module.exports = { createOrder, getBySeller, getByClient, updateState }
