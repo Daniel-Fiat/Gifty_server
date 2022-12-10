@@ -12,5 +12,23 @@ const createOrder = (req, res, next) => {
         res.sendStatus(400)
     }
 }
+const getByseller = (req, res, next) => {
+    const { id } = req.params
+    OrderModel.find({ sellerUser: id })
+        .then(order => res.status(201).json(order))
+}
+const getByClient = (req, res, next) => {
+    const { id } = req.params
+    OrderModel.find({ clientUser: id })
+        .then(order => res.status(201).json(order))
+        .catch(next)
+}
+const updateState = (req, res, next) => {
+    const { state } = req.body
+    const { idOrder } = req.params
+    console.log(idOrder, state)
+    OrderModel.findByIdAndUpdate(idOrder, { idOrder: state }, { new: true })
+        .then(order => res.status(200).json(order))
+}
 
-module.exports = { createOrder }
+module.exports = { createOrder, getByseller, getByClient, updateState }
