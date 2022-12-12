@@ -4,6 +4,15 @@ const mongoose = require("mongoose");
 const { isValidObjectId } = require('mongoose');
 const MESSAGE_ERROR_ID = 'Error: InvalidID';
 
+const uploadImage = (req, res, next) => {
+
+    if (!req.file) {
+        next(new Error("No file uploaded!"));
+        return;
+    }
+    res.json({ fileUrl: req.file.path });
+}
+
 const createProduct = (req, res, next) => {
     const { name, imgUrl, description, price, sellerUser, category, chance } = req.body
     UserModel.findById(sellerUser).then(user => {
@@ -123,4 +132,4 @@ const getTopTen = (req, res, next) => {
         .then(products => res.status(200).json(products))
 }
 
-module.exports = { createProduct, getOne, deleteOne, getCatalog, getAll, updateProduct, getWishList, getCategory, getChanse, getTopTen }
+module.exports = { uploadImage, createProduct, getOne, deleteOne, getCatalog, getAll, updateProduct, getWishList, getCategory, getChanse, getTopTen }
