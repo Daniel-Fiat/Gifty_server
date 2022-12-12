@@ -3,4 +3,5 @@ module.exports = (app) => {
     app.use("/products", require('./products.routes'));
     app.use("/review", require('./review.routes'));
     app.use("/orders", require('./order.routes'));
+    app.use("/payment", require('./payment.routes'));
 }
