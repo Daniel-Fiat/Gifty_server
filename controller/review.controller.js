@@ -16,5 +16,11 @@ const createReview = (req, res, next) => {
     })
     //// revisar control 
 }
+const getByProduct = (req, res, next) => {
+    const { id } = req.params
+    ReviewModel.find({ userID: id })
+        .populate({ path: "userId", select: "email" })
+        .then(reviews => res.status(200).json(reviews))
+}
 
-module.exports = { createReview }
+module.exports = { createReview, getByProduct }
