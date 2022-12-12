@@ -3,11 +3,11 @@ const ReviewModel = require('../models/Review.model')
 const { createReview } = require('../controller/review.controller');
 
 /* --------------GET------------- */
-
+router.get('/productreview')
 
 
 /* ---------------PUT -----------*/
-router.put('/new', createReview)
+router.post('/new', createReview)
 
 
 

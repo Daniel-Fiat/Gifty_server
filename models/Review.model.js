@@ -3,14 +3,12 @@ const { Schema, model, Types } = require("mongoose");
 const reviewSchema = new Schema(
     {
         product_id: {
-            type: String,//ObjectID
-            required: true,
-            trim: true
+            type: Types.ObjectId,
+            ref: "Product"
         },
         userId: {
-            type: String,//ObjectID
-            required: true,
-            trim: true
+            type: Types.ObjectId,
+            ref: "User"
         },
         comment: {
             type: String,
