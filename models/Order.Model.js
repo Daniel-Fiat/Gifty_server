@@ -22,7 +22,7 @@ const orderSchema = new Schema(
         deliverDate: String,
         State: {
             type: String,
-            enum: ["pendingPayment", "pendingConfirmation", "accepted", "delivered", "paidOut", "reject"],
+            enum: ["pendingPayment", "pendingConfirmation", "accepted", "delivered", "paidOut", "reject", "review"],
             default: "pendconfir"
         },
         deliveryAddress: {
