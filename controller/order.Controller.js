@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 
 const createOrder = (req, res, next) => {
     const { price, sellerUser, clientUser, productID, dedication, deliveryAddress, deliverDate, State } = req.body
+    console.log("====> ACA")
     if (price) {
         OrderModel.create({ price, sellerUser, clientUser, productID, dedication, deliveryAddress, deliverDate, State })
             .then(res.sendStatus(201))
@@ -33,7 +34,7 @@ const updateState = (req, res, next) => {
     const { state } = req.body
     const { idOrder } = req.params
     console.log(idOrder, state)
-    OrderModel.findByIdAndUpdate(idOrder, { idOrder: state }, { new: true })
+    OrderModel.findByIdAndUpdate(idOrder, { State: state }, { new: true })
         .then(order => res.status(200).json(order))
 }
 
