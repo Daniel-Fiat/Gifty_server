@@ -16,7 +16,7 @@ const createOrder = (req, res, next) => {
 const getBySeller = (req, res, next) => {
     const { id } = req.params
     OrderModel.find({ sellerUser: id })
-        .late({ path: "sellerUser", select: "email" })
+        .populate({ path: "sellerUser", select: "email" })
         .populate({ path: "clientUser", select: "email" })
         .populate({ path: "productID" })
         .then(order => res.status(201).json(order))
