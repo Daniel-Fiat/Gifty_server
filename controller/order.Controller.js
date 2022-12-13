@@ -7,7 +7,7 @@ const createOrder = (req, res, next) => {
     console.log("====> ACA")
     if (price) {
         OrderModel.create({ price, sellerUser, clientUser, productID, dedication, deliveryAddress, deliverDate, State })
-            .then(res.sendStatus(201))
+            .then(order => res.status(201).json(order))
             .catch(next)
     } else {
         res.sendStatus(400)
