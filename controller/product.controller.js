@@ -14,10 +14,10 @@ const uploadImage = (req, res, next) => {
 }
 
 const createProduct = (req, res, next) => {
-    const { name, imgUrl, description, price, sellerUser, category, chance } = req.body
+    const { name, imgUrl, description, price, sellerUser, category, chance, rangeAge } = req.body
     UserModel.findById(sellerUser).then(user => {
         if (user) {
-            ProductModel.create({ name, imgUrl, description, price, sellerUser: user._id, category, chance })
+            ProductModel.create({ name, imgUrl, description, price, sellerUser: user._id, category, chance, rangeAge })
                 .then(res.sendStatus(201))
                 .catch(next)
         } else {
