@@ -24,7 +24,6 @@ const createProduct = (req, res, next) => {
             res.sendStatus(401)
         }
     })
-
 }
 
 const updateProduct = (req, res, next) => {
