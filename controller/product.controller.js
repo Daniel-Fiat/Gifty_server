@@ -124,7 +124,7 @@ const getChanse = (req, res, next) => {
             res.status(200).json(products)
         })
 }
-const getTopTen = (req, res, next) => {
+const getTopSix = (req, res, next) => {
     ProductModel
         .find()
         .limit(6)
@@ -132,4 +132,4 @@ const getTopTen = (req, res, next) => {
         .then(products => res.status(200).json(products))
 }
 
-module.exports = { uploadImage, createProduct, getOne, deleteOne, getCatalog, getAll, updateProduct, getWishList, getCategory, getChanse, getTopTen }
+module.exports = { uploadImage, createProduct, getOne, deleteOne, getCatalog, getAll, updateProduct, getWishList, getCategory, getChanse, getTopSix }
