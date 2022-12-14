@@ -127,7 +127,7 @@ const getChanse = (req, res, next) => {
 const getTopTen = (req, res, next) => {
     ProductModel
         .find()
-        .limit(10)
+        .limit(6)
         .sort({ rating: -1 })
         .then(products => res.status(200).json(products))
 }
