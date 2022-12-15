@@ -89,12 +89,13 @@ const getCatalog = (req, res, next) => {
 }
 const getWishList = (req, res, next) => {
     const { idUser } = req.params
-    UserModel.findById(idUser).then(user =>
+    UserModel.findById(idUser).then(user => {
+        console.log(user.wishList)
         ProductModel.find({ _id: user.wishList })
             .then(wishList => {
                 res.status(200).json(wishList)
             })
-
+    }
     )
 }
 const getCategory = (req, res, next) => {

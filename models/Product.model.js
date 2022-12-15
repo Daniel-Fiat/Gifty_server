@@ -30,7 +30,7 @@ const productSchema = new Schema(
         },
         category: [{ type: String, default: [], enum: ["breakfast", 'cakes', 'tapas', 'flowers', 'drinks', 'objects'] }],
         chance: [{ type: String, default: [], enum: ["birthday", 'anniversary', 'valentine', 'weddings', 'babyshower', 'graduation'] }],
-        rangeAge: [{ type: String, default: [], enum: ["babyboomers", 'generaciónX', 'millennials ', 'generaciónZ', 'Alpha'] }],
+        rangeAge: [{ type: String, default: [], enum: ["babyboomers", 'generaciónX', 'millennials', 'generaciónZ', 'Alpha'] }],
 
     },
     {
