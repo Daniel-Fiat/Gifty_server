@@ -18,7 +18,7 @@ const createReview = (req, res, next) => {
 }
 const getByProduct = (req, res, next) => {
     const { id } = req.params
-    ReviewModel.find({ userID: id })
+    ReviewModel.find({ product_id: id })
         .populate({ path: "userId", select: "email" })
         .then(reviews => res.status(200).json(reviews))
 }
