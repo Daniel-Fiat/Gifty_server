@@ -18,7 +18,7 @@ const createProduct = (req, res, next) => {
     UserModel.findById(sellerUser).then(user => {
         if (user) {
             ProductModel.create({ name, imgUrl, description, price, sellerUser: user._id, category, chance, rangeAge })
-                .then(res.sendStatus(201))
+                .then(product => { res.status(201).json(product) })
                 .catch(next)
         } else {
             res.sendStatus(401)
