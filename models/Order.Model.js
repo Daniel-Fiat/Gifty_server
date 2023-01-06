@@ -2,7 +2,6 @@ const { Schema, model, Types } = require("mongoose");
 
 const orderSchema = new Schema(
     {
-
         price: {
             type: Number,
         },
@@ -36,7 +35,6 @@ const orderSchema = new Schema(
     },
 
     {
-        // this second object adds extra properties: `createdAt` and `updatedAt`    
         timestamps: true
     }
 );

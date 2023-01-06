@@ -1,12 +1,10 @@
 // ℹ️ Gets access to environment variables/settings
-// https://www.npmjs.com/package/dotenv
 require("dotenv").config();
 
 // ℹ️ Connects to the database
 require("./db");
 
-// Handles http requests (express is node js framework)
-// https://www.npmjs.com/package/express
+// Handles http requests 
 const express = require("express");
 
 const app = express();
@@ -15,10 +13,9 @@ const app = express();
 require("./config")(app);
 
 // default value for title local
-const capitalize = require("./utils/capitalize");
 const projectName = "Gifty_server";
 
-app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
+app.locals.appTitle = projectName;
 
 // 👇 Start handling routes here
 

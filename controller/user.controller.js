@@ -2,8 +2,8 @@ const UserModel = require('../models/User.model');
 const { isValidObjectId } = require('mongoose');
 const bcrypt = require('bcryptjs');
 const { signJwt } = require('../utils/jwt.util');
-const SALT = 10;
 
+const SALT = 10;
 const MESSAGE_ERROR_EMAIL = 'Email ya está en uso.';
 
 const getUserToken = (req, res, next) => {
@@ -32,8 +32,8 @@ const createUser = (req, res, next) => {
       }
       next(err);
     });
-
 }
+
 ///Token
 const login = (req, res, next) => {
   const { email, password } = req.body
@@ -71,6 +71,7 @@ const editOne = (req, res, next) => {
     .then(user => res.status(200).json(user))
     .catch(next)
 }
+
 const addWishList = (req, res, next) => {
   const { id } = req.params
   const { idProduct } = req.body
@@ -84,6 +85,7 @@ const addWishList = (req, res, next) => {
     }
   })
 }
+
 const removeOneWishList = (req, res, next) => {
   const { id } = req.params
   const { idProduct } = req.body

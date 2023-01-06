@@ -1,6 +1,5 @@
 const { Schema, model, Types } = require("mongoose");
 
-// TODO: Please make sure you edit the User model to whatever makes sense in this case
 const productSchema = new Schema(
     {
         name: {
@@ -34,7 +33,6 @@ const productSchema = new Schema(
 
     },
     {
-        // this second object adds extra properties: `createdAt` and `updatedAt`    
         timestamps: true
     }
 );

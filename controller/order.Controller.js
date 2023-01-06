@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 
 const createOrder = (req, res, next) => {
     const { price, sellerUser, clientUser, productID, dedication, deliveryAddress, deliverDate, State } = req.body
-    console.log("====> ACA")
     if (price) {
         OrderModel.create({ price, sellerUser, clientUser, productID, dedication, deliveryAddress, deliverDate, State })
             .then(order => res.status(201).json(order))
@@ -13,6 +12,7 @@ const createOrder = (req, res, next) => {
         res.sendStatus(400)
     }
 }
+
 const getBySeller = (req, res, next) => {
     const { id } = req.params
     OrderModel.find({ sellerUser: id })
@@ -21,6 +21,7 @@ const getBySeller = (req, res, next) => {
         .populate({ path: "productID" })
         .then(order => res.status(201).json(order))
 }
+
 const getByClient = (req, res, next) => {
     const { id } = req.params
     OrderModel.find({ clientUser: id })
@@ -30,10 +31,10 @@ const getByClient = (req, res, next) => {
         .then(order => res.status(201).json(order))
         .catch(next)
 }
+
 const updateState = (req, res, next) => {
     const { state } = req.body
     const { idOrder } = req.params
-    console.log(idOrder, state)
     OrderModel.findByIdAndUpdate(idOrder, { State: state }, { new: true })
         .then(order => res.status(200).json(order))
 }

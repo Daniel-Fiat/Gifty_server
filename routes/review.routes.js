@@ -6,7 +6,6 @@ const { createReview, getByProduct } = require('../controller/review.controller'
 router.get('/productreview')
 router.get('/review/:id', getByProduct)
 
-
 /* ---------------PUT -----------*/
 router.post('/new', createReview)
 

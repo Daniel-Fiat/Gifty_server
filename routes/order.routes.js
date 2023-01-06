@@ -12,6 +12,6 @@ router.post('/new', createOrder);
 /* ---------------PUT -----------*/
 router.put('/update/:idOrder', updateState)
 
-/* ---------------Delete -----------*/
+/* ---------------DELETE -----------*/
 
 module.exports = router;

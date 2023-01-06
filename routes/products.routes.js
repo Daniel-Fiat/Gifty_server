@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { uploadImage, createProduct, getOne, deleteOne, getCatalog, getAll, updateProduct, getWishList, getCategory, getChanse, getTopSix } = require('../controller/product.controller');
 const fileUploader = require("../config/cloudinary.config");
+
 /* --------------GET------------- */
 router.get('/TopSix', getTopSix)
 router.get('/category/:category', getCategory)
@@ -16,7 +17,7 @@ router.post("/uploadImage", fileUploader.single("imageUrl"), uploadImage)
 router.put('/new', fileUploader.single("imageUrl"), createProduct)
 router.put('/edit/:idProduct', updateProduct)
 
-/* ---------------delete -----------*/
+/* ---------------DELETE -----------*/
 router.delete('/delete/:id', deleteOne)
 
 module.exports = router;

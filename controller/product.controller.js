@@ -5,7 +5,6 @@ const { isValidObjectId } = require('mongoose');
 const MESSAGE_ERROR_ID = 'Error: InvalidID';
 
 const uploadImage = (req, res, next) => {
-
     if (!req.file) {
         next(new Error("No file uploaded!"));
         return;
@@ -52,7 +51,6 @@ const getOne = (req, res, next) => {
 const getAll = (req, res, next) => {
     const { find, limit, offset, sort } = req.body
     const skip = limit * offset
-    console.log(find)
     try {
         ProductModel.find(find)
             .limit(limit)
@@ -80,6 +78,7 @@ const deleteOne = (req, res, next) => {
         res.status(400).json({ errorMessage: err.message })
     }
 }
+
 const getCatalog = (req, res, next) => {
     const { idUser } = req.params
     ProductModel.find({ sellerUser: idUser })
@@ -87,10 +86,10 @@ const getCatalog = (req, res, next) => {
             res.status(200).json(catalog)
         })
 }
+
 const getWishList = (req, res, next) => {
     const { idUser } = req.params
     UserModel.findById(idUser).then(user => {
-        console.log(user.wishList)
         ProductModel.find({ _id: user.wishList })
             .then(wishList => {
                 res.status(200).json(wishList)
@@ -98,10 +97,10 @@ const getWishList = (req, res, next) => {
     }
     )
 }
+
 const getCategory = (req, res, next) => {
     const { category } = req.params
     const { offset = 0, limit = 15 } = req.body
-    console.log(category)
     ProductModel
         .find({ category: category })
         .limit(limit)
@@ -111,10 +110,10 @@ const getCategory = (req, res, next) => {
             res.status(200).json(products)
         })
 }
+
 const getChanse = (req, res, next) => {
     const { chance } = req.params
     const { offset = 0, limit = 15 } = req.body
-    console.log(chance)
     ProductModel
         .find({ chance: chance })
         .limit(limit)
@@ -124,6 +123,7 @@ const getChanse = (req, res, next) => {
             res.status(200).json(products)
         })
 }
+
 const getTopSix = (req, res, next) => {
     ProductModel
         .find()

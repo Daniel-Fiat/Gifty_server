@@ -14,7 +14,7 @@ router.post('/login', login)
 router.put("/edit/:id", validateToken, editOne);
 router.put("/wishList/add/:id", addWishList);
 
-/* ---------------Delete -----------*/
+/* ---------------DELETE -----------*/
 router.put("/wishList/remove/:id", removeOneWishList);
 
 module.exports = router;
