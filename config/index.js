@@ -25,7 +25,7 @@ module.exports = (app) => {
   // controls a very specific header to pass headers from the frontend
   app.use(
     cors({
-      origin: [FRONTEND_URL, "https://gifty-next-js.vercel.app/", "http://localhost:3000"]
+      origin: [FRONTEND_URL, "https://gifty-next-js.vercel.app", "http://localhost:3000"]
     })
   );
 
